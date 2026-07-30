@@ -1,4 +1,4 @@
-import { Filter, Menu, Plus, Search, Sun } from "lucide-react";
+import { Bell, Filter, Menu, Plus, Search, Settings, Sun } from "lucide-react";
 
 const Header = () => {
   return (
@@ -40,9 +40,19 @@ const Header = () => {
                 hover:bg-slate-100 dark:hover-slate-900 transition-colors">
                     <Sun className="h-5 w-5"></Sun>
                 </button>
+
                 {/* Notification */}
-                <button>
-                    
+                <button className="relative p-2.5 rounded-xl text-slate-700 dark:text-slate-200
+                    hover:bg-slate-100 dark:hover:bg-slate-600 transition-colors">
+                    <Bell className="w-5 h-5" />
+                    <span className="absolute -top-1 w-5 h-5 bg-red-400 text-white text-xs
+                        items-center flex justify-center">
+                        3
+                    </span>
+                </button>
+                <button className="relative p-2.5 rounded-xl text-slate-700 dark:text-slate-200
+                    hover:bg-slate-100 dark:hover:bg-slate-600 transition-colors">
+                    <Settings className="h-5 w-5" />
                 </button>
             </div>
         </div>
