@@ -1,4 +1,4 @@
-import { Menu } from "lucide-react";
+import { Filter, Menu, Plus, Search, Sun } from "lucide-react";
 
 const Header = () => {
   return (
@@ -15,11 +15,38 @@ const Header = () => {
                     <p>Welcome back Alex! Here's what's happenning today.</p>
                 </div>
             </div>
-            <div>
-                
+            {/* Center */}
+            <div className="flex-1 max-w-xl mx-8">
+                <div className="relative">
+                    <Search className="w-4 h-4 absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400"/>
+                    <input type="text"  placeholder="Search..." className=" w-full pl-10 pr-4 py-2.5 rounded-xl 
+                       bg-slate-100 dark:bg-slate-800 border-slate-200 border text-slate-900 dark:text-white focus:outline-none
+                       focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all
+                       " />
+                       <button className="absolute right-2 top-1/2 transform -translate-y-1/2">
+                            <Filter />
+                       </button>
+                </div>
+            </div>
+            {/* Right */}
+            <div className="flex items-center space-x-3">
+                <button className="hidden md:flex items-center space-x-2 py-2 px-4 bg-gradient-to-r
+                    from-blue-500 to-purple-600 text-white rounded-xl hover:shadow mr-3">
+                    <Plus className="w-8 h-5" ></Plus>
+                    <p>New</p>
+                </button>
+                {/* Toggle */}
+                <button className="p-2.5 rounded-lg text-slate-600 dark:text-slate-200
+                hover:bg-slate-100 dark:hover-slate-900 transition-colors">
+                    <Sun className="h-5 w-5"></Sun>
+                </button>
+                {/* Notification */}
+                <button>
+                    
+                </button>
             </div>
         </div>
-    </div>
+  </div>
   )
 }
 

@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { AppSidebar } from './components/AppSidebar'
 import Header from './components/Header'
+import { BrowserRouter } from 'react-router-dom'
   function App() {
 
   return (
@@ -9,8 +10,10 @@ import Header from './components/Header'
       <div className='flex h-screen overflow-hidden '>
        
       <AppSidebar />
-       <div className='flex-1 flex-flex-col overflow-hidden'>
+       <div className='flex-1 flex flex-col overflow-hidden'>
         <Header/>
+        <BrowserRouter>
+        </BrowserRouter>
        </div>
     </div>
    

@@ -12,7 +12,7 @@ export const AppSidebar=()=>{
                     <Zap height={24} width={24} className="text-white"/>
                 </div>
                <div >
-                   <h2 className="text-xl font-bold text-slate-800 dark:text-white"> Nexus</h2>
+                   <h2 className="text-xl font-bold text-slate-800 dark:text-white"> Q-serve</h2>
                    <p className="text-xs text-slate-800">Admin Panel </p>
                </div>
             </div>
