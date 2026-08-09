@@ -1,5 +1,5 @@
-import { Bell, Filter, Menu, Plus, Search, Settings, Sun } from "lucide-react";
-
+import { Bell, ChevronDown, Filter, Menu, Plus, Search, Settings, Sun } from "lucide-react";
+import myLogo from '../assets/profile_1.png'; 
 const Header = () => {
   return (
     <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-b
@@ -45,15 +45,29 @@ const Header = () => {
                 <button className="relative p-2.5 rounded-xl text-slate-700 dark:text-slate-200
                     hover:bg-slate-100 dark:hover:bg-slate-600 transition-colors">
                     <Bell className="w-5 h-5" />
-                    <span className="absolute -top-1 w-5 h-5 bg-red-400 text-white text-xs
-                        items-center flex justify-center">
-                        3
+                    <span className="absolute -top-1 w-5 h-5 bg-red-500 text-white text-xs
+                        items-center flex justify-center rounded-full">
+                        2
                     </span>
                 </button>
                 <button className="relative p-2.5 rounded-xl text-slate-700 dark:text-slate-200
                     hover:bg-slate-100 dark:hover:bg-slate-600 transition-colors">
                     <Settings className="h-5 w-5" />
                 </button>
+                {/* user Profile */}
+               <div className="flex items-center space-x-3 pl-3 border-1 border-slate-300  
+                dark:border-slate-700 ">
+                    <img alt="user" src={myLogo} className="h-6 w-6 rounded-full 
+                        ring-2 ring-blue-300">
+                    </img>
+                    <div className="hidden md:block " >
+                        <p className="text-sm font-medium text-slate-500 dark:text-slate-200">
+                            Santu Ghosh
+                        </p>
+                        <p className="text-sm text-slate-500 dark:taxt-slate-200">Admin</p>
+                    </div>
+                    <ChevronDown className="h-5 w-5 text-slate-500"></ChevronDown>
+               </div>
             </div>
         </div>
   </div>
