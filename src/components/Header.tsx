@@ -1,13 +1,19 @@
 import { Bell, ChevronDown, Filter, Menu, Plus, Search, Settings, Sun } from "lucide-react";
-import myLogo from '../assets/profile_1.png'; 
-const Header = () => {
+import myLogo from '../assets/profile_1.png';
+type HeaderProps ={
+    SidebarCollapsed:boolean,
+    onToggleSidebar:any
+}
+
+const Header = ({SidebarCollapsed,onToggleSidebar}:HeaderProps) => {
+
   return (
-    <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-b
+      <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-b
         border-slate-200/50 dark:border-slate-700/50"> 
-        <div className="flex items-center justify-between ">
+         <div className="flex items-center justify-between ">
             <div className="flex items-center space-x-4">
                 <button className="p-2 rounded-lg text-slate-600 dark:text-slate-200
-                    hover:bg-slate-100 hover:cursor-pointer"> 
+                    hover:bg-slate-100 hover:cursor-pointer" onClick={onToggleSidebar}> 
                     <Menu className="h-5 w-5"></Menu>
                 </button>
                 <div className="hidden md:block">

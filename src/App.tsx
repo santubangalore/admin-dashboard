@@ -21,7 +21,8 @@ import { BrowserRouter } from 'react-router-dom';
             onPageChange={setCurrentPage}
             />
           <div className='flex-1 flex flex-col overflow-hidden'>
-            <Header />
+            <Header SidebarCollapsed={sidebarCollapsed} 
+              onToggleSidebar={()=>setSidebarCollapsed(!sidebarCollapsed)}/>
             <BrowserRouter>
             </BrowserRouter>
           </div>

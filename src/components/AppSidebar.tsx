@@ -14,7 +14,7 @@ const menuItems = [
         icon: LayoutDashboard,
         label: "Dashboard",
         path: "/dashboard",
-        active: true,
+        active: false,
         badge: "New"
     },
     {
@@ -117,13 +117,14 @@ type SidebarParams ={
     onPageChange:any
 }
 
-export const AppSidebar=({collapsed, onToggle,currentPage,onPageChange}:SidebarParams)=>{
+export const AppSidebar=({collapsed, onToggle, currentPage, onPageChange}:SidebarParams)=>{
     const [expandedItems,setExpandedItems]= useState(new Set(['analytics']));
 
     //console.log('collapsed',collapsed,'currentPage',currentPage,'onToggle',onToggle,'onPageChange',onPageChange);
     function toggle(itemId:string){
+        setExpandedItems(new Set(''));
         const newExpanded= new Set(expandedItems);
-
+        console.log(expandedItems);
         if(newExpanded.has(itemId)){
             newExpanded.delete(itemId)
         }
@@ -131,11 +132,15 @@ export const AppSidebar=({collapsed, onToggle,currentPage,onPageChange}:SidebarP
             newExpanded.add(itemId);
         }
         setExpandedItems(newExpanded);
+        onPageChange(itemId);
+        console.log(expandedItems);
     }
 
     return(
-     <div className={`${collapsed? 'w-20':'w-72'} transition duration-500 ease-in-out bg-white/80 dark:bg-slate-800/90
-        backdrop-blur-xl broder-r border-slate-200/50 dark:border-slate-700/50 flex flex-col` }  >
+     <div className={`${collapsed? 'w-16':'w-72'} transition-all duration-500 ease-in-out 
+        bg-white/80 dark:bg-slate-800/90
+        backdrop-blur-xl broder-r border-slate-200/50 
+        dark:border-slate-700/50 flex flex-col relative z-10` }  >
         <div className="p-6 border-b border-slate-200/50  "> 
             <div className="flex items-center space-x-3 w-[150px] mb-5">
                 <div className="w-10 h-10 bg-gradient-to-r from-blue-600 
@@ -153,17 +158,17 @@ export const AppSidebar=({collapsed, onToggle,currentPage,onPageChange}:SidebarP
        <nav className="flex-1 p-2 space-y-2 overflow-y-auto">
         {menuItems.map((item)=>{
             return (
-             <div key={item.id} className="flex items-center space-x-2 p-1 rounded-lg
+             <div key={item.id} className="flex flex-col items-center space-x-2 p-1 rounded-lg
                 hover:bg-slate-100 dark:hover:bg-slate-700/50 transition-colors
                 cursor-pointer">
                    <button className={`w-full flex items-center justify-between p-2
-                    rounded-xl transition-all duration-200 ${ currentPage===item.id || item.active ?
-                    'bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg shadow-blue-500/25' 
+                    rounded-xl transition-all duration-200 cursor-pointer ${ currentPage===item.id || item.active ?
+                    'bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg shadow-slate-500/25' 
                     :'text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800/50'}`} 
                     onClick={()=> {if(item.submenu) 
-                         {
+                        {
                             toggle(item.id);
-                         } 
+                        } 
                         else 
                         {
                             onPageChange(item.id);
@@ -171,12 +176,10 @@ export const AppSidebar=({collapsed, onToggle,currentPage,onPageChange}:SidebarP
                     }}>
                      <div className="flex ">
                         <item.icon className={`w-5 h-5 `} />
-                        <>
                          {!collapsed && (
+                            <>
                            <span className="text-sm ml-2 mr-1">{item.label}</span>
-                            )}
-                           {
-                              item.badge && (
+                             { item.badge && (
                                 <span className="px-2 py-1 bg-red-500 
                                     text-white rounded-full text-xs">{item.badge}
                                 </span>
@@ -187,6 +190,8 @@ export const AppSidebar=({collapsed, onToggle,currentPage,onPageChange}:SidebarP
                            )}
                            
                         </>
+                         )}
+                       
                      </div>
                      {! collapsed && item.submenu && 
                         (
@@ -194,10 +199,12 @@ export const AppSidebar=({collapsed, onToggle,currentPage,onPageChange}:SidebarP
                         )
                      }
                  </button> 
-                 <div className="ml-8 mt-2 space-y-1">
+                 <div className="ml-0 mt-1 space-y-1">
                     { !collapsed && item.submenu && expandedItems.has(item.id) && (
                             item.submenu.map((subItem)=>(
-                                <button className="w-full text-left p-2 text-sm text-slate-600">
+                                <button className="w-full text-left p-2 text-sm text-gray-800
+                                hover:text-slate-800 hover:bg-blue-100 rounded-md  dark:hover:text-slate-200 
+                                dark:text-slate-400 dark:hover:bg-slate-800/50 cursor-pointer">
                                     {subItem.label}
                                 </button>
                             ))
@@ -210,7 +217,7 @@ export const AppSidebar=({collapsed, onToggle,currentPage,onPageChange}:SidebarP
        <div className="p-4 border-t border-slate-200/50">
         <div className="flex items-center space-x-3 p-3 rounded-xl 
             bg-slate-50 dark:bg-slate-700/50">
-           <img src={myLogo} alt="user" className="w-10 h-10 rounded-full ring-2 ring-blue-500" >
+           <img src={myLogo} alt="user" className={`${collapsed? 'w-5 h-5':'w-10 h-10'} rounded-full ring-2 ring-blue-500`} >
            </img>     
             <div className="flex-1 min-w-0">
                 <div className="flex-1 min-w-0">
