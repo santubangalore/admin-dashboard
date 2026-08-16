@@ -12,8 +12,8 @@ const Header = ({SidebarCollapsed,onToggleSidebar}:HeaderProps) => {
         border-slate-200/50 dark:border-slate-700/50"> 
          <div className="flex items-center justify-between ">
             <div className="flex items-center space-x-4">
-                <button className="p-2 rounded-lg text-slate-600 dark:text-slate-200
-                    hover:bg-slate-100 hover:cursor-pointer" onClick={onToggleSidebar}> 
+                <button className={`${SidebarCollapsed? "ml-2 p-4": "p-4"} rounded-lg text-slate-600 dark:text-slate-200
+                    hover:bg-slate-100 hover:cursor-pointer`} onClick={onToggleSidebar}> 
                     <Menu className="h-5 w-5"></Menu>
                 </button>
                 <div className="hidden md:block">

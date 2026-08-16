@@ -120,7 +120,6 @@ type SidebarParams ={
 export const AppSidebar=({collapsed, onToggle, currentPage, onPageChange}:SidebarParams)=>{
     const [expandedItems,setExpandedItems]= useState(new Set(['analytics']));
 
-    //console.log('collapsed',collapsed,'currentPage',currentPage,'onToggle',onToggle,'onPageChange',onPageChange);
     function toggle(itemId:string){
         setExpandedItems(new Set(''));
         const newExpanded= new Set(expandedItems);
@@ -137,7 +136,7 @@ export const AppSidebar=({collapsed, onToggle, currentPage, onPageChange}:Sideba
     }
 
     return(
-     <div className={`${collapsed? 'w-16':'w-72'} transition-all duration-500 ease-in-out 
+     <div className={`${collapsed? 'w-18':'w-72'} transition-all duration-500 ease-in-out 
         bg-white/80 dark:bg-slate-800/90
         backdrop-blur-xl broder-r border-slate-200/50 
         dark:border-slate-700/50 flex flex-col relative z-10` }  >
